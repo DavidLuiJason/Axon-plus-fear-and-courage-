@@ -1,6 +1,6 @@
 {
  "version": 2,
- "seal": "69fe831f999caf94c92daa773c778f9d41b1184d0ac4b8f9aeffe61f8fa4b6e4",
+ "seal": "6b55c3608ad41bcd14843efc745210a74b6b3b18da110ade6ba7b67bf8978895",
  "dictionaries": [
   "public/dictionary/en"
  ],
@@ -163,6 +163,9 @@
   },
   "docs/prompts/C10_FOR_CHATGPT_CONVERTER_WIRING.md": {
    "bytes": 11426
+  },
+  "docs/reports/C01_REPORT.md": {
+   "bytes": 1789
   },
   "index.html": {
    "bytes": 1290
@@ -573,6 +576,12 @@
   "src/tools/engines/create/randomPicker.ts": {
    "bytes": 5046
   },
+  "src/tools/engines/finance/loan.ts": {
+   "bytes": 4086
+  },
+  "src/tools/engines/finance/splitTip.ts": {
+   "bytes": 3141
+  },
   "src/tools/engines/numbers/baseConvert.ts": {
    "bytes": 1319
   },
@@ -744,6 +753,9 @@
   "tests/lexicon.test.ts": {
    "bytes": 18498
   },
+  "tests/loan.test.ts": {
+   "bytes": 10001
+  },
   "tests/matcher.test.ts": {
    "bytes": 13235
   },
@@ -767,6 +779,9 @@
   },
   "tests/snapshot.test.mjs": {
    "bytes": 3137
+  },
+  "tests/splitTip.test.ts": {
+   "bytes": 33786
   },
   "tests/symbols.test.ts": {
    "bytes": 5308
