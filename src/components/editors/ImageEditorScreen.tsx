@@ -160,6 +160,8 @@ export const ImageEditorScreen: React.FC<ImageEditorScreenProps> = ({
   // Active picture bitmap (Phone safety: only one full-size bitmap kept decoded)
   const bitmapRef = useRef<ImageBitmap | null>(null);
   const [hasPicture, setHasPicture] = useState(false);
+  // Bumped every time a new picture finishes decoding, so the canvas redraws even when no other state changed
+  const [bitmapVersion, setBitmapVersion] = useState(0);
 
   // Active sub-panel
   const [activePanel, setActivePanel] = useState<ActivePanel>(null);
@@ -283,7 +285,7 @@ export const ImageEditorScreen: React.FC<ImageEditorScreenProps> = ({
     rendered.height = 0;
 
     requestAnimationFrame(updateCanvasDisplayBox);
-  }, [currentHistory.ops, updateCanvasDisplayBox]);
+  }, [currentHistory.ops, updateCanvasDisplayBox, bitmapVersion]);
 
   useLayoutEffect(() => {
     if (hasPicture) {
@@ -452,6 +454,7 @@ export const ImageEditorScreen: React.FC<ImageEditorScreenProps> = ({
       try {
         const { bitmap, scaled } = await loadBitmapFromFile(file);
         bitmapRef.current = bitmap;
+        setBitmapVersion((v) => v + 1);
         setScaledNotice(scaled);
       } catch {
         setErrorMessage('That file could not be opened as a picture.');
@@ -483,6 +486,7 @@ export const ImageEditorScreen: React.FC<ImageEditorScreenProps> = ({
           bitmapRef.current.close();
         }
         bitmapRef.current = bitmap;
+        setBitmapVersion((v) => v + 1);
         filesMapRef.current.set(activeEntryItem.id, file);
 
         const thumb = await createThumbnail(file);
@@ -542,6 +546,7 @@ export const ImageEditorScreen: React.FC<ImageEditorScreenProps> = ({
         try {
           const { bitmap, scaled } = await loadBitmapFromFile(activeFile);
           bitmapRef.current = bitmap;
+          setBitmapVersion((v) => v + 1);
           setScaledNotice(scaled);
         } catch {
           setErrorMessage('That file could not be opened as a picture.');
@@ -755,6 +760,7 @@ export const ImageEditorScreen: React.FC<ImageEditorScreenProps> = ({
         try {
           const { bitmap, scaled } = await loadBitmapFromFile(nextFile);
           bitmapRef.current = bitmap;
+          setBitmapVersion((v) => v + 1);
           setScaledNotice(scaled);
         } catch {
           setErrorMessage('That file could not be opened as a picture.');
