@@ -1,6 +1,6 @@
 {
  "version": 2,
- "seal": "b74f3276a624d90a98e1f6e5c9439f5892b43f5083a777ea4caad05e1aebc8fd",
+ "seal": "5c2fd2957875e581f8ad9a986641aa6e6d644fd6e143df5a197e70097da824f1",
  "dictionaries": [
   "public/dictionary/en"
  ],
@@ -368,6 +368,9 @@
   },
   "src/components/buildDetails.ts": {
    "bytes": 3222
+  },
+  "src/components/editors/AdjustFilterPanels.tsx": {
+   "bytes": 6193
   },
   "src/components/editors/AudioEditorScreen.tsx": {
    "bytes": 1852
