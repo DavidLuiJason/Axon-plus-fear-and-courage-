@@ -1,6 +1,6 @@
 {
  "version": 2,
- "seal": "5c2fd2957875e581f8ad9a986641aa6e6d644fd6e143df5a197e70097da824f1",
+ "seal": "69fe831f999caf94c92daa773c778f9d41b1184d0ac4b8f9aeffe61f8fa4b6e4",
  "dictionaries": [
   "public/dictionary/en"
  ],
@@ -83,11 +83,17 @@
   "docs/DEPLOYMENT_GUIDE.md": {
    "bytes": 3050
   },
+  "docs/DIRECTOR_HANDBOOK.md": {
+   "bytes": 8694
+  },
   "docs/G3_PACK_DESIGN.md": {
    "bytes": 2261
   },
   "docs/G5A_REGISTRY_VERDICT.md": {
    "bytes": 2563
+  },
+  "docs/JOB_BOARD.md": {
+   "bytes": 7638
   },
   "docs/PHASE_G_LOCAL_EVIDENCE.md": {
    "bytes": 4380
@@ -97,6 +103,66 @@
   },
   "docs/archive/AXON_ROADMAP_V15_1.md": {
    "bytes": 303060
+  },
+  "docs/archive/AXON_ROADMAP_V16_2.md": {
+   "bytes": 39817
+  },
+  "docs/director/verify_return.py": {
+   "bytes": 7770
+  },
+  "docs/prompts/A01_FOR_AISTUDIO_KIT_AND_FIRST_3_SCREENS.md": {
+   "bytes": 9823
+  },
+  "docs/prompts/A02_FOR_AISTUDIO_TEXT_AND_NUMBER_SCREENS.md": {
+   "bytes": 9535
+  },
+  "docs/prompts/A03_FOR_AISTUDIO_CREATE_SCREENS.md": {
+   "bytes": 8604
+  },
+  "docs/prompts/A04_FOR_AISTUDIO_TIME_AND_DEVICE_SCREENS.md": {
+   "bytes": 9066
+  },
+  "docs/prompts/A05_FOR_AISTUDIO_FINANCE_AND_DEVELOPER_SCREENS.md": {
+   "bytes": 9668
+  },
+  "docs/prompts/A06_FOR_AISTUDIO_FILE_AND_QR_SCREENS.md": {
+   "bytes": 10284
+  },
+  "docs/prompts/A07_FOR_AISTUDIO_CONVERTER_NEW_KINDS.md": {
+   "bytes": 8408
+  },
+  "docs/prompts/A08_FOR_AISTUDIO_CODE_FORMATTER_SCREEN.md": {
+   "bytes": 7319
+  },
+  "docs/prompts/C01_FOR_CHATGPT_SMALL_ENGINES.md": {
+   "bytes": 12422
+  },
+  "docs/prompts/C02_FOR_CHATGPT_JSON_AND_CSV_ENGINES.md": {
+   "bytes": 10873
+  },
+  "docs/prompts/C03_FOR_CHATGPT_YAML_AND_XML_ENGINES.md": {
+   "bytes": 10906
+  },
+  "docs/prompts/C04_FOR_CHATGPT_TEXT_FORMATS_AND_FILE_INSPECTOR.md": {
+   "bytes": 12066
+  },
+  "docs/prompts/C05_FOR_CHATGPT_QR_CODE_ENGINE.md": {
+   "bytes": 10408
+  },
+  "docs/prompts/C06_FOR_CHATGPT_FILE_COMPARE_ZIP_IMAGE_PLAN.md": {
+   "bytes": 12833
+  },
+  "docs/prompts/C07_FOR_CHATGPT_IMAGE_EDITOR_ZOOM.md": {
+   "bytes": 14470
+  },
+  "docs/prompts/C08_FOR_CHATGPT_CODE_FORMATTER.md": {
+   "bytes": 10009
+  },
+  "docs/prompts/C09_FOR_CHATGPT_ENGINE_REGISTRY_AND_TRUTH.md": {
+   "bytes": 10994
+  },
+  "docs/prompts/C10_FOR_CHATGPT_CONVERTER_WIRING.md": {
+   "bytes": 11426
   },
   "index.html": {
    "bytes": 1290
