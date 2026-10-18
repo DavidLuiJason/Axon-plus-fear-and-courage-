@@ -1,6 +1,6 @@
 {
  "version": 2,
- "seal": "fc9e124af362d93b07b926f05f72de06701a799524f05851e119db17a70ca527",
+ "seal": "df8aa1f024cc8f7e08954e131929a29bec80a9baf3aab78f64db6279cab7ef9e",
  "dictionaries": [
   "public/dictionary/en"
  ],
@@ -172,6 +172,9 @@
   },
   "docs/reports/C02_REPORT.md": {
    "bytes": 2830
+  },
+  "docs/reports/C03_REPORT.md": {
+   "bytes": 10952
   },
   "index.html": {
    "bytes": 1290
@@ -585,6 +588,12 @@
   "src/tools/engines/data/jsonTokens.ts": {
    "bytes": 7210
   },
+  "src/tools/engines/data/xml.ts": {
+   "bytes": 13026
+  },
+  "src/tools/engines/data/yaml.ts": {
+   "bytes": 14893
+  },
   "src/tools/engines/finance/loan.ts": {
    "bytes": 4086
   },
@@ -824,6 +833,12 @@
   },
   "tests/wordBook.test.ts": {
    "bytes": 4483
+  },
+  "tests/xml.test.ts": {
+   "bytes": 3720
+  },
+  "tests/yaml.test.ts": {
+   "bytes": 3631
   },
   "tools/auto-unpack.sh": {
    "bytes": 3453
