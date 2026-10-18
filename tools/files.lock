@@ -1,6 +1,6 @@
 {
  "version": 2,
- "seal": "7dcacd9b8dbc936c3f0a07ae34c0b935a6ccc5445777e55d7457c6ca0b81b370",
+ "seal": "fc9e124af362d93b07b926f05f72de06701a799524f05851e119db17a70ca527",
  "dictionaries": [
   "public/dictionary/en"
  ],
@@ -169,6 +169,9 @@
   },
   "docs/reports/C01_REPORT.md": {
    "bytes": 1789
+  },
+  "docs/reports/C02_REPORT.md": {
+   "bytes": 2830
   },
   "index.html": {
    "bytes": 1290
@@ -579,6 +582,9 @@
   "src/tools/engines/create/randomPicker.ts": {
    "bytes": 5046
   },
+  "src/tools/engines/data/jsonTokens.ts": {
+   "bytes": 7210
+  },
   "src/tools/engines/finance/loan.ts": {
    "bytes": 4086
   },
@@ -746,6 +752,9 @@
   },
   "tests/imageFilters.test.ts": {
    "bytes": 1816
+  },
+  "tests/jsonTokens.test.ts": {
+   "bytes": 2204
   },
   "tests/kernel.test.ts": {
    "bytes": 22288
