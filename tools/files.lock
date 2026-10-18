@@ -1,6 +1,6 @@
 {
  "version": 2,
- "seal": "6b55c3608ad41bcd14843efc745210a74b6b3b18da110ade6ba7b67bf8978895",
+ "seal": "7dcacd9b8dbc936c3f0a07ae34c0b935a6ccc5445777e55d7457c6ca0b81b370",
  "dictionaries": [
   "public/dictionary/en"
  ],
@@ -163,6 +163,9 @@
   },
   "docs/prompts/C10_FOR_CHATGPT_CONVERTER_WIRING.md": {
    "bytes": 11426
+  },
+  "docs/prompts/C11_FOR_CHATGPT_REMAINING_SMALL_ENGINES.md": {
+   "bytes": 11277
   },
   "docs/reports/C01_REPORT.md": {
    "bytes": 1789
