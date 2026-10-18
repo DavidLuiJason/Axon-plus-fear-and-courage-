@@ -7,17 +7,17 @@ Read after `docs/ROADMAP.md`. This file is volatile: update it after EVERY decis
 WAVE 1, ChatGPT, engines only, all independent, can run at the same time (each in its own NEW chat with its prompt, AXON_ROADMAP_V16_3.md and a BASE.zip of the repository):
 C01 small engines. RETURNED 2026-10-18: only loan and split and tip were delivered (its sandbox could not run anything); the Director fixed both and rewrote their tests (merge package C01-merge.zip). The other three engines moved to C11.
 C11 remaining small engines (pattern tester, device profile, tool store). No dependency.
-C02 JSON tokens and reformat, JSON view model, CSV and TSV. No dependency.
-C03 YAML subset and XML. No dependency.
+C02 JSON tokens and reformat: DONE (tokenizer, validate, minify, pretty; INSPECTED-FIX 2026-10-18). NOT DELIVERED, now new jobs: C12 JSON view model, C13 CSV and TSV (prompts NOT WRITTEN yet). No dependency.
+C03 YAML subset and XML: DONE (C03 accepted, C03F fixed block scalars, both merged by the owner). No dependency.
 C04 Markdown, HTML to text, text format hub, file inspector. No dependency.
 C05 QR code with an independent decoder proof. No dependency.
 C06 file compare, zip tool, image conversion plan. No dependency.
 C07 image editor zoom, pan, tap-for-full-picture (the only ChatGPT job allowed to change screen files). No dependency (needs R7 in the base).
 
 WAVE 2, ChatGPT, after the jobs they need are MERGED:
-C08 code formatter engine. Needs C02.
+C08 code formatter engine. Needs C02 (tokenizer is merged; check whether it needs C12).
 C09 engine registry, legacy descriptors, File Compare catalog entry, truth test. Needs C01 to C06 and C11 (adapts to what exists).
-C10 Converter wiring for Data formats, Text formats, Image (engine side only). Needs C02, C03, C04, C06.
+C10 Converter wiring for Data formats, Text formats, Image (engine side only). Needs C02 (so C13), C03, C04, C06.
 
 AI STUDIO, screens only, each in a NEW session that imports the repository after the listed jobs are merged:
 A01 screen kit and Calculator, Case Converter, Find and Replace. No ChatGPT dependency. START HERE: it sets the look of every tool screen; the owner approves it in the preview.
@@ -57,5 +57,8 @@ Not possible honestly yet or waiting for the owner (12): Web Search, Link Analyz
 LEFT OUT by the owner (11): Market Scope, Audio Converter, Text to Speech, Voice Library, Voice Cloner, Speech to Text, Video Converter, Video Maker, Video Downloader, Collage Maker, Picture to Table or Code. (Also the audio and video editors.)
 
 ## 5. STATUS LOG (newest first; add a line after every step)
+2026-10-18 (late): C03F INSPECTED-OK: both YAML defects fixed (blank lines and # inside block scalars), matches PyYAML, old engine fails the new test. Package C03F-merge.zip. Known YAML limits: compact `- - 7` refused (clear message), `1.5e3` reads as a number, flow nesting of 101 accepted. Next: owner merges C03F-merge.zip.
+2026-10-18 (late): C03 INSPECTED-OK (both engines, 41 tricky strings and hostile inputs pass; limits: XML mixed text joins, typed scalars come back as strings, XML indent ignored, writer can write more records than the reader accepts). Found 2 YAML defects, fix job C03F written. Package C03-merge.zip merged by the owner.
+2026-10-18 (late): C02 RETURNED and INSPECTED-FIX (partial): only the JSON tokenizer delivered; Director fixed a double-space bug in pretty() and a bad test, added exact-output tests (380 checks). jsonView and csv moved to C12 and C13. Package C02-merge.zip merged. C01 package merged (confirmed in the main zip).
 2026-10-18: C01 RETURNED and INSPECTED-FIX. ChatGPT delivered loan and split-and-tip only, with thin unrun tests; the Director's run found a failing test and three defects (false 'unpayable', wrong round-up for uneven shares, silent rounding of 3-decimal bills) plus wrong descriptor ids; fixed by the Director, tests rewritten with independent Python-derived tables (720 and 15,281 checks pass, strict tsc passes). Merge package: C01-merge.zip. ChatGPT cannot install dependencies in its sandbox; prompts now say so and forbid delivering fewer items for that reason. Pattern tester, device profile, tool store moved to C11. Prompts patched to carry the exact catalog toolIds. Next: owner merges C01-merge.zip, sends C11 and the other wave 1 jobs.
 2026-10-18: Round 8 planned. Roadmap v16.3, this board, the handbook and the prompt files C01 to C10 and A01 to A08 written. Earlier plan (round 7, three big ChatGPT jobs that also built screens) is SUPERSEDED: ChatGPT stopped without building on the first big job and correctly refused the dependent job on a missing base. Nothing from round 7 was merged. R7 (Image editor redraw fix) is applied by the owner. Next: owner uploads the docs package, downloads BASE.zip, sends wave 1 and A01.
