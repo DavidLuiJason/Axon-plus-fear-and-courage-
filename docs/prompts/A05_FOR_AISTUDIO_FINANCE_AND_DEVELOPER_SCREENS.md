@@ -2,7 +2,7 @@
 
 WHO THIS IS FOR: Google AI Studio (the screen builder).
 WHAT THIS DOES: Builds four tool screens on the kit: Loan Calculator, Split and Tip, Pattern Tester, JSON and Data Viewer.
-WHAT YOU DO: Start a NEW AI Studio project by importing the GitHub repository (or uploading BASE.zip, the repository downloaded from GitHub with Code, Download ZIP). Use a session that has no older work in it. Needs job A01 merged and ChatGPT jobs C01 and C02 merged: BASE.zip must be the repository after all three. Paste the whole text of this file as your message. When AI Studio finishes, export the project zip (the AXON source export), and give that zip together with the BASE zip you started from to Claude (or the next Director account). Never push from AI Studio.
+WHAT YOU DO: Start a NEW AI Studio project by importing the GitHub repository (or uploading BASE.zip, the repository downloaded from GitHub with Code, Download ZIP). Use a session that has no older work in it. Needs job A01 merged and ChatGPT jobs C01 (fixed), C11 and C02 merged: BASE.zip must be the repository after all of them. Paste the whole text of this file as your message. When AI Studio finishes, export the project zip (the AXON source export), and give that zip together with the BASE zip you started from to Claude (or the next Director account). Never push from AI Studio.
 WHAT TO BRING BACK: the exported zip, plus AI Studio's own list of files it created and changed.
 
 ---

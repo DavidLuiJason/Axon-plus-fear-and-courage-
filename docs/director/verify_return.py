@@ -133,8 +133,21 @@ def main():
             print(f'  [{status}] (base: {was}) {c}{mark}')
             if ro != 0 and mark: print('        ' + '\n        '.join(oo.strip().splitlines()[-6:]))
         if worse: problems.append(f'{len(worse)} tests fail that did not fail before')
+        # type check the in-lane SOURCE files with a global tsc if there is one (strict, DOM lib, no project types; test files are skipped)
+        srcfiles = [os.path.join(o_dir, k) for k in touched if k.endswith(('.ts', '.tsx')) and k.startswith('src/')]
+        if srcfiles and shutil.which('tsc'):
+            cfg = os.path.join(tmp, 'tsconfig.check.json')
+            json.dump({'compilerOptions': {'target': 'ES2022', 'module': 'ESNext', 'lib': ['ES2022', 'DOM', 'DOM.Iterable'], 'skipLibCheck': True,
+                       'moduleResolution': 'bundler', 'isolatedModules': True, 'moduleDetection': 'force', 'strict': True, 'noEmit': True, 'types': [], 'jsx': 'react-jsx'},
+                       'files': srcfiles}, open(cfg, 'w'))
+            rc, oc = run('tsc -p ' + cfg, o_dir)
+            print('TYPE CHECK (global tsc, strict, in-lane src files only):', 'PASS' if rc == 0 else 'FAIL')
+            if rc != 0:
+                problems.append('type check failed'); print('        ' + '\n        '.join(oc.strip().splitlines()[:15]))
+        else:
+            print('TYPE CHECK: not run here (no tsc or no src files). Rely on the builder\'s report and the cloud build.')
         shutil.rmtree(tmp, ignore_errors=True)
-        print('NOT RUN HERE: tsc type check (no project toolchain in the Director sandbox). Rely on the builder\'s report and the cloud build.')
+        print('NOTE: the project\'s own type check (vite/client types, React, Capacitor) still only runs in the cloud build.')
     if delta:
         keep = [k for k in touched if (not lane) or any(glob_match(k, g) for g in lane)]
         with zipfile.ZipFile(delta, 'w', zipfile.ZIP_DEFLATED) as z:
