@@ -1,6 +1,6 @@
 {
  "version": 2,
- "seal": "04cccd114cbdb3affe890be2ba99f2d68cb496d59af5181ab067deb2a98bc762",
+ "seal": "e8f0418f93de030957d2ea7e80068ef43d5cf0a32e2605ded1cc05ace6a53da9",
  "dictionaries": [
   "public/dictionary/en"
  ],
@@ -181,6 +181,9 @@
   },
   "docs/reports/C03_REPORT.md": {
    "bytes": 10952
+  },
+  "docs/reports/C04_REPORT.md": {
+   "bytes": 6521
   },
   "index.html": {
    "bytes": 1290
@@ -600,6 +603,9 @@
   "src/tools/engines/data/yaml.ts": {
    "bytes": 14893
   },
+  "src/tools/engines/files/inspect.ts": {
+   "bytes": 8060
+  },
   "src/tools/engines/finance/loan.ts": {
    "bytes": 4086
   },
@@ -630,8 +636,14 @@
   "src/tools/engines/text/findReplace.ts": {
    "bytes": 3231
   },
+  "src/tools/engines/text/htmlText.ts": {
+   "bytes": 5113
+  },
   "src/tools/engines/text/index.ts": {
    "bytes": 958
+  },
+  "src/tools/engines/text/markdown.ts": {
+   "bytes": 5448
   },
   "src/tools/engines/text/sortLines.ts": {
    "bytes": 3852
@@ -641,6 +653,9 @@
   },
   "src/tools/engines/text/textCompare.ts": {
    "bytes": 4372
+  },
+  "src/tools/engines/text/textFormats.ts": {
+   "bytes": 3910
   },
   "src/tools/engines/time/dateCalc.ts": {
    "bytes": 7079
@@ -747,6 +762,9 @@
   "tests/exportPool.test.ts": {
    "bytes": 2388
   },
+  "tests/fileInspect.test.ts": {
+   "bytes": 3155
+  },
   "tests/fixtures/analysis100.json": {
    "bytes": 7006
   },
@@ -758,6 +776,9 @@
   },
   "tests/fixtures/sym1-written-set.json": {
    "bytes": 8593
+  },
+  "tests/htmlText.test.ts": {
+   "bytes": 2158
   },
   "tests/imageAdjust.test.ts": {
    "bytes": 2614
@@ -782,6 +803,9 @@
   },
   "tests/loan.test.ts": {
    "bytes": 10001
+  },
+  "tests/markdown.test.ts": {
+   "bytes": 4320
   },
   "tests/matcher.test.ts": {
    "bytes": 13235
@@ -812,6 +836,9 @@
   },
   "tests/symbols.test.ts": {
    "bytes": 5308
+  },
+  "tests/textFormats.test.ts": {
+   "bytes": 1207
   },
   "tests/tools.test.ts": {
    "bytes": 13833
