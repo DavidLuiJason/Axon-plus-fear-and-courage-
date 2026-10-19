@@ -1,6 +1,6 @@
 {
  "version": 2,
- "seal": "e8f0418f93de030957d2ea7e80068ef43d5cf0a32e2605ded1cc05ace6a53da9",
+ "seal": "99267c3c6bdff9ae4b14504d41a3ce97b36faa7ed32759d4c412246af0fa5f8b",
  "dictionaries": [
   "public/dictionary/en"
  ],
@@ -184,6 +184,9 @@
   },
   "docs/reports/C04_REPORT.md": {
    "bytes": 6521
+  },
+  "docs/reports/C05_REPORT.md": {
+   "bytes": 8741
   },
   "index.html": {
    "bytes": 1290
@@ -591,6 +594,9 @@
   "src/tools/engines/create/passwordGenerator.ts": {
    "bytes": 3272
   },
+  "src/tools/engines/create/qrCode.ts": {
+   "bytes": 13371
+  },
   "src/tools/engines/create/randomPicker.ts": {
    "bytes": 5046
   },
@@ -824,6 +830,9 @@
   },
   "tests/pictureSet.test.ts": {
    "bytes": 5465
+  },
+  "tests/qrCode.test.ts": {
+   "bytes": 11213
   },
   "tests/roadmapSize.test.ts": {
    "bytes": 1714
