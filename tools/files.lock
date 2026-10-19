@@ -1,6 +1,6 @@
 {
  "version": 2,
- "seal": "dbc6d66875e5da9fcbd85d46d57607e822cbac766cafc50fe2059daeee9bd93c",
+ "seal": "6076879946848c1c98279f83d0309bfa5268f9c744ba6b800e430437c208ced8",
  "dictionaries": [
   "public/dictionary/en"
  ],
@@ -190,6 +190,9 @@
   },
   "docs/reports/C06_REPORT.md": {
    "bytes": 10119
+  },
+  "docs/reports/C07_REPORT.md": {
+   "bytes": 11089
   },
   "index.html": {
    "bytes": 1290
@@ -483,6 +486,9 @@
   "src/components/editors/VideoEditorScreen.tsx": {
    "bytes": 1852
   },
+  "src/components/editors/ZoomStage.tsx": {
+   "bytes": 8511
+  },
   "src/crash/crashLog.ts": {
    "bytes": 8710
   },
@@ -696,11 +702,17 @@
   "src/tools/imageEdit/filters.ts": {
    "bytes": 1757
   },
+  "src/tools/imageEdit/gesture.ts": {
+   "bytes": 7831
+  },
   "src/tools/imageEdit/history.ts": {
    "bytes": 2036
   },
   "src/tools/imageEdit/pictureSet.ts": {
    "bytes": 4834
+  },
+  "src/tools/imageEdit/viewTransform.ts": {
+   "bytes": 6925
   },
   "src/tools/shared/opHistory.ts": {
    "bytes": 1024
@@ -798,6 +810,9 @@
   "tests/fixtures/sym1-written-set.json": {
    "bytes": 8593
   },
+  "tests/gesture.test.ts": {
+   "bytes": 6529
+  },
   "tests/htmlText.test.ts": {
    "bytes": 2158
   },
@@ -887,6 +902,9 @@
   },
   "tests/videoTimeline.test.ts": {
    "bytes": 7817
+  },
+  "tests/viewTransform.test.ts": {
+   "bytes": 5220
   },
   "tests/wordBook.test.ts": {
    "bytes": 4483
