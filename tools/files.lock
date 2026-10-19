@@ -1,6 +1,6 @@
 {
  "version": 2,
- "seal": "99267c3c6bdff9ae4b14504d41a3ce97b36faa7ed32759d4c412246af0fa5f8b",
+ "seal": "dbc6d66875e5da9fcbd85d46d57607e822cbac766cafc50fe2059daeee9bd93c",
  "dictionaries": [
   "public/dictionary/en"
  ],
@@ -187,6 +187,9 @@
   },
   "docs/reports/C05_REPORT.md": {
    "bytes": 8741
+  },
+  "docs/reports/C06_REPORT.md": {
+   "bytes": 10119
   },
   "index.html": {
    "bytes": 1290
@@ -609,6 +612,9 @@
   "src/tools/engines/data/yaml.ts": {
    "bytes": 14893
   },
+  "src/tools/engines/files/fileCompare.ts": {
+   "bytes": 15003
+  },
   "src/tools/engines/files/inspect.ts": {
    "bytes": 8060
   },
@@ -617,6 +623,9 @@
   },
   "src/tools/engines/finance/splitTip.ts": {
    "bytes": 3141
+  },
+  "src/tools/engines/images/convertPlan.ts": {
+   "bytes": 8031
   },
   "src/tools/engines/numbers/baseConvert.ts": {
    "bytes": 1319
@@ -741,6 +750,9 @@
   "tests/collage.test.ts": {
    "bytes": 5042
   },
+  "tests/convertPlan.test.ts": {
+   "bytes": 4054
+  },
   "tests/crash.test.ts": {
    "bytes": 17237
   },
@@ -767,6 +779,9 @@
   },
   "tests/exportPool.test.ts": {
    "bytes": 2388
+  },
+  "tests/fileCompare.test.ts": {
+   "bytes": 6595
   },
   "tests/fileInspect.test.ts": {
    "bytes": 3155
