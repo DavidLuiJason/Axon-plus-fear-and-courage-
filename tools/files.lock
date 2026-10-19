@@ -1,6 +1,6 @@
 {
  "version": 2,
- "seal": "6076879946848c1c98279f83d0309bfa5268f9c744ba6b800e430437c208ced8",
+ "seal": "136b60724817d1f4ece4b45706774d7d80251f7743d74b33779621f875fcce12",
  "dictionaries": [
   "public/dictionary/en"
  ],
@@ -193,6 +193,9 @@
   },
   "docs/reports/C07_REPORT.md": {
    "bytes": 11089
+  },
+  "docs/reports/C08_REPORT.md": {
+   "bytes": 7103
   },
   "index.html": {
    "bytes": 1290
@@ -591,6 +594,9 @@
   "src/tools/converter/kinds.ts": {
    "bytes": 1368
   },
+  "src/tools/engines/code/codeFormat.ts": {
+   "bytes": 19669
+  },
   "src/tools/engines/create/encodeDecode.ts": {
    "bytes": 5840
   },
@@ -758,6 +764,12 @@
   },
   "tests/chatSession.test.ts": {
    "bytes": 6145
+  },
+  "tests/codeFormat.test.ts": {
+   "bytes": 7342
+  },
+  "tests/codeFormatAdversarial.test.ts": {
+   "bytes": 10902
   },
   "tests/collage.test.ts": {
    "bytes": 5042
