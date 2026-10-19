@@ -9,10 +9,10 @@ C01 small engines. RETURNED 2026-10-18: only loan and split and tip were deliver
 C11 remaining small engines (pattern tester, device profile, tool store). No dependency.
 C02 JSON tokens and reformat: DONE (tokenizer, validate, minify, pretty; INSPECTED-FIX 2026-10-18). NOT DELIVERED, now new jobs: C12 JSON view model, C13 CSV and TSV (prompts NOT WRITTEN yet). No dependency.
 C03 YAML subset and XML: DONE (C03 accepted, C03F fixed block scalars, both merged by the owner). No dependency.
-C04 Markdown, HTML to text, text format hub, file inspector. No dependency.
-C05 QR code with an independent decoder proof. No dependency.
-C06 file compare, zip tool, image conversion plan. No dependency.
-C07 image editor zoom, pan, tap-for-full-picture (the only ChatGPT job allowed to change screen files). No dependency (needs R7 in the base).
+C04 Markdown, HTML to text, text format hub, file inspector: ACCEPTED with Director fixes (per roadmap v16.5). No dependency.
+C05 QR code with an independent decoder proof: ACCEPTED with Director fixes (per roadmap v16.5). No dependency.
+C06 file compare and image conversion plan ACCEPTED with Director fixes (per roadmap v16.5); its ZIP tool was NOT delivered and becomes the new job C14 (prompt NOT WRITTEN yet). No dependency.
+C07 image editor zoom, pan, tap-for-full-picture: RETURNED 2026-10-19 and ACCEPTED for merge (package C07-merge.zip). Pure engines proven; the React layer needs the cloud build and phone checks.
 
 WAVE 2, ChatGPT, after the jobs they need are MERGED:
 C08 code formatter engine. Needs C02 (tokenizer is merged; check whether it needs C12).
@@ -57,6 +57,7 @@ Not possible honestly yet or waiting for the owner (12): Web Search, Link Analyz
 LEFT OUT by the owner (11): Market Scope, Audio Converter, Text to Speech, Voice Library, Voice Cloner, Speech to Text, Video Converter, Video Maker, Video Downloader, Collage Maker, Picture to Table or Code. (Also the audio and video editors.)
 
 ## 5. STATUS LOG (newest first; add a line after every step)
+2026-10-19: C07 RETURNED and INSPECTED-OK (replacement Director account; the previous account hit its limit while checking it). verify_return.py: 1 changed file (ImageEditorScreen.tsx, +31 lines), 6 new, nothing out of lane, no placeholders, both new tests pass, the other 30 test commands unchanged. Independent checks: strict tsc on viewTransform.ts and gesture.ts passes; own 3,000-round pinch, lift and cancel simulation: 0 out-of-bounds, 0 jump on lift, focal drift about 1e-12 px, tap rules correct; mutation tests: tap-distance and max-pointer mutants killed, a minScale constant mutant survives because the code uses the literal 1. UNVERIFIED: the React layer and the editor edit (no React types here); the report itself says partial validation. Package C07-merge.zip (the 7 C07 files plus roadmap v16.6 and this board). Also recorded: C04, C05, C06 were accepted by the previous account (roadmap v16.5); this board had not been updated for them. Next: owner merges C07-merge.zip and adds the two test lines to test:kernel; write prompts C12 (JSON view model), C13 (CSV and TSV), C14 (ZIP tool); send C11.
 2026-10-18 (late): C03F INSPECTED-OK: both YAML defects fixed (blank lines and # inside block scalars), matches PyYAML, old engine fails the new test. Package C03F-merge.zip. Known YAML limits: compact `- - 7` refused (clear message), `1.5e3` reads as a number, flow nesting of 101 accepted. Next: owner merges C03F-merge.zip.
 2026-10-18 (late): C03 INSPECTED-OK (both engines, 41 tricky strings and hostile inputs pass; limits: XML mixed text joins, typed scalars come back as strings, XML indent ignored, writer can write more records than the reader accepts). Found 2 YAML defects, fix job C03F written. Package C03-merge.zip merged by the owner.
 2026-10-18 (late): C02 RETURNED and INSPECTED-FIX (partial): only the JSON tokenizer delivered; Director fixed a double-space bug in pretty() and a bad test, added exact-output tests (380 checks). jsonView and csv moved to C12 and C13. Package C02-merge.zip merged. C01 package merged (confirmed in the main zip).

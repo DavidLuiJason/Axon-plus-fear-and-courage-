@@ -8,6 +8,7 @@
  */
 
 import React, { useEffect, useRef, useState, useCallback, useLayoutEffect } from 'react';
+import { App } from '@capacitor/app';
 import {
   Crop,
   FlipHorizontal,
@@ -27,6 +28,7 @@ import {
 import { ScreenHeader } from '../ScreenHeader';
 import { MediaStrip } from './MediaStrip';
 import { CropOverlay } from './CropOverlay';
+import { ZoomStage } from './ZoomStage';
 import { renderOps } from './ImagePipeline';
 import {
   applyOp,
@@ -165,6 +167,34 @@ export const ImageEditorScreen: React.FC<ImageEditorScreenProps> = ({
 
   // Active sub-panel
   const [activePanel, setActivePanel] = useState<ActivePanel>(null);
+  const [fullPictureView, setFullPictureView] = useState(false);
+  const toggleFullPictureView = useCallback(() => {
+    if (activePanel === 'crop') return;
+    setFullPictureView((current) => !current);
+  }, [activePanel]);
+
+  // Android Back exits full-picture view before leaving the editor.
+  useEffect(() => {
+    if (!fullPictureView) return;
+    let disposed = false;
+    let listener: { remove: () => Promise<void> } | undefined;
+    App.addListener('backButton', () => setFullPictureView(false)).then((handle) => {
+      if (disposed) void handle.remove();
+      else listener = handle;
+    }).catch(() => { /* Browser preview may not expose the native Back event. */ });
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape' || event.key === 'Backspace') {
+        event.preventDefault();
+        setFullPictureView(false);
+      }
+    };
+    window.addEventListener('keydown', onKeyDown);
+    return () => {
+      disposed = true;
+      if (listener) void listener.remove();
+      window.removeEventListener('keydown', onKeyDown);
+    };
+  }, [fullPictureView]);
 
   // Crop panel state
   const [selectedCropShape, setSelectedCropShape] = useState<string>('free');
@@ -838,14 +868,14 @@ export const ImageEditorScreen: React.FC<ImageEditorScreenProps> = ({
 
   return (
     <div className="relative w-full h-full flex flex-col bg-[#121315] text-[#ECECEC] overflow-hidden font-sans">
-      <ScreenHeader
+      {!fullPictureView && <ScreenHeader
         title="Image Editor"
         tagline="IMAGE EDITOR"
         backLabel="MEDIA"
         collapsible
         onBack={onBack}
         onLogoClick={onLogoClick ?? (() => {})}
-      />
+      />}
 
       {/* Hidden file input with multiple support */}
       <input
@@ -859,7 +889,7 @@ export const ImageEditorScreen: React.FC<ImageEditorScreenProps> = ({
       />
 
       {/* A. Action row */}
-      <div className="px-5 h-12 flex items-center justify-between border-b border-white/5 bg-[#121315] shrink-0">
+      {!fullPictureView && <div className="px-5 h-12 flex items-center justify-between border-b border-white/5 bg-[#121315] shrink-0">
         <div className="flex items-center gap-1">
           <button
             type="button"
@@ -899,12 +929,15 @@ export const ImageEditorScreen: React.FC<ImageEditorScreenProps> = ({
             Save
           </button>
         </div>
-      </div>
+      </div>}
 
       {/* B. Work area */}
       <div
         ref={workAreaRef}
-        className="flex-1 min-h-0 bg-[#141517] flex flex-col items-center justify-center p-4 overflow-hidden relative"
+        className={fullPictureView
+          ? 'fixed inset-0 z-50 bg-[#141517] flex flex-col items-center justify-center overflow-hidden p-0'
+          : 'flex-1 min-h-0 bg-[#141517] flex flex-col items-center justify-center p-4 overflow-hidden relative'}
+        style={fullPictureView ? { paddingTop: 'env(safe-area-inset-top)', paddingRight: 'env(safe-area-inset-right)', paddingBottom: 'env(safe-area-inset-bottom)', paddingLeft: 'env(safe-area-inset-left)' } : undefined}
       >
         {!hasPicture ? (
           <div className="flex flex-col items-center justify-center text-center space-y-3">
@@ -934,18 +967,16 @@ export const ImageEditorScreen: React.FC<ImageEditorScreenProps> = ({
           </div>
         ) : (
           <div className="w-full h-full flex flex-col items-center justify-center relative overflow-hidden">
-            <canvas
-              ref={canvasRef}
-              className={`max-w-full max-h-full object-contain ${
-                isPreviewActive ? 'hidden' : 'block'
-              }`}
-            />
-            {isPreviewActive && (
-              <canvas
-                ref={previewCanvasRef}
-                className="max-w-full max-h-full object-contain block"
-              />
-            )}
+            <ZoomStage
+              pictureWidth={currentOutputSize.width}
+              pictureHeight={currentOutputSize.height}
+              enabled={activePanel !== 'crop'}
+              resetKey={`${active?.id ?? ''}:${bitmapVersion}:${currentOutputSize.width}x${currentOutputSize.height}:${activePanel === 'crop' ? 'crop' : 'normal'}`}
+              onToggleFull={toggleFullPictureView}
+            >
+              <canvas ref={canvasRef} className={`w-full h-full ${isPreviewActive ? 'hidden' : 'block'}`} />
+              {isPreviewActive && <canvas ref={previewCanvasRef} className="w-full h-full block" />}
+            </ZoomStage>
 
             {/* Crop Overlay rectangle */}
             {activePanel === 'crop' && (
@@ -969,7 +1000,7 @@ export const ImageEditorScreen: React.FC<ImageEditorScreenProps> = ({
       </div>
 
       {/* C. Bottom area */}
-      <div className="shrink-0 bg-[#141517] border-t border-white/5">
+      {!fullPictureView && <div className="shrink-0 bg-[#141517] border-t border-white/5">
         {/* Optional limit notice */}
         {hasPicture && limitNotice && (
           <div className="py-1 px-4 text-center text-xs text-[#707277] border-b border-white/5 bg-[#121315]">
@@ -1576,7 +1607,7 @@ export const ImageEditorScreen: React.FC<ImageEditorScreenProps> = ({
         <p className="text-xs text-[#707277] text-center pb-2">
           Dimmed tools are coming soon.
         </p>
-      </div>
+      </div>}
     </div>
   );
 };

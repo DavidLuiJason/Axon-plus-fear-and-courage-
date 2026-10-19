@@ -21,14 +21,18 @@ PLACEHOLDERS = [r'\bTODO\b', r'\bFIXME\b', r'not implemented', r'NotImplemented'
 def read_zip(path):
     z = zipfile.ZipFile(path)
     names = [n for n in z.namelist() if not n.endswith('/')]
-    # step into a single top folder that holds package.json or src/ (builders sometimes add one)
-    tops = {n.split('/')[0] for n in names}
+    # step into the folder that holds package.json (or src/ docs/ tests/) when the zip has wrapper folders
     prefix = ''
-    if len(tops) == 1 and all('/' in n for n in names):
-        top = list(tops)[0]
-        inner = [n[len(top) + 1:] for n in names]
-        if any(x in ('package.json',) or x.startswith('src/') or x.startswith('docs/') or x.startswith('tests/') for x in inner):
-            prefix = top + '/'
+    cands = sorted({n[:-len('package.json')] for n in names if n.endswith('package.json') and n.count('/') <= 3}, key=lambda x: x.count('/'))
+    if cands:
+        prefix = cands[0]
+    else:
+        tops = {n.split('/')[0] for n in names}
+        if len(tops) == 1 and all('/' in n for n in names):
+            top = list(tops)[0]
+            inner = [n[len(top) + 1:] for n in names]
+            if any(x.startswith(('src/', 'docs/', 'tests/')) for x in inner):
+                prefix = top + '/'
     out = {}
     for n in names:
         rel = n[len(prefix):] if prefix and n.startswith(prefix) else n
@@ -134,7 +138,14 @@ def main():
             if ro != 0 and mark: print('        ' + '\n        '.join(oo.strip().splitlines()[-6:]))
         if worse: problems.append(f'{len(worse)} tests fail that did not fail before')
         # type check the in-lane SOURCE files with a global tsc if there is one (strict, DOM lib, no project types; test files are skipped)
-        srcfiles = [os.path.join(o_dir, k) for k in touched if k.endswith(('.ts', '.tsx')) and k.startswith('src/')]
+        srcfiles = []
+        for k in touched:
+            if k.endswith('.ts') and k.startswith('src/'):
+                head = ret[k].decode('utf8', 'replace')
+                if not any(x in head for x in ("from 'react'", 'from "react"', "'@capacitor", "'lucide-react'", "import.meta")):
+                    srcfiles.append(os.path.join(o_dir, k))
+        skipped = [k for k in touched if k.endswith('.tsx') and k.startswith('src/')]
+        if skipped: print('TYPE CHECK skips React files (their types are not installed here; read them by hand and rely on the cloud build):', ', '.join(skipped))
         if srcfiles and shutil.which('tsc'):
             cfg = os.path.join(tmp, 'tsconfig.check.json')
             json.dump({'compilerOptions': {'target': 'ES2022', 'module': 'ESNext', 'lib': ['ES2022', 'DOM', 'DOM.Iterable'], 'skipLibCheck': True,
