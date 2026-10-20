@@ -7,6 +7,7 @@
 import { registerCapability, listCapabilities, listChatActions, getCapability } from '../src/capabilities';
 import type { ChatAction } from '../src/capabilities/types';
 import { registerAxonToolsCapability } from '../src/capabilities/registerAxonTools';
+import { registerEngineTools } from '../src/capabilities/registerEngineTools';
 import { registerSettingsCapability } from '../src/capabilities/registerSettings';
 import { registerAxonSourceCapability } from '../src/capabilities/registerAxonSource';
 import { registerInterfaceCaptureCapability } from '../src/capabilities/registerInterfaceCapture';
@@ -32,6 +33,7 @@ function assert(condition: boolean, message: string): void {
 
 function main(): void {
   registerAxonToolsCapability();
+  registerEngineTools();
   registerSettingsCapability();
   registerAxonSourceCapability();
   registerInterfaceCaptureCapability();

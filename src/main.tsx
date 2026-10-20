@@ -4,6 +4,7 @@ import App from './App.tsx';
 import './index.css';
 import { registerSettingsCapability } from './capabilities/registerSettings';
 import { registerAxonToolsCapability } from './capabilities/registerAxonTools';
+import { registerEngineTools } from './capabilities/registerEngineTools';
 import { registerAxonSourceCapability } from './capabilities/registerAxonSource';
 import { registerInterfaceCaptureCapability } from './capabilities/registerInterfaceCapture';
 import { registerBackgroundProofCapability } from './capabilities/registerBackgroundProof';
@@ -23,6 +24,8 @@ import { getCrashLog, installGlobalCrashHandlers } from './crash/crashLog';
 registerSettingsCapability();
 // Stage 4B: AXON Tools capability (declarative; not tied to currentScreen)
 registerAxonToolsCapability();
+// Engine descriptors are declared as not-built until brain resolution can execute them.
+registerEngineTools();
 // Stage 4C: AXON Source capability (declarative; not tied to currentScreen)
 registerAxonSourceCapability();
 // Stage 4D: Interface Capture capability — shell only (engine deleted)

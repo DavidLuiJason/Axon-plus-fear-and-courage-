@@ -60,7 +60,7 @@ async function main() {
   assert(toolsInSubgroup('video').map((t) => t.id).join(',') === 'video-converter,video-maker,video-downloader', 'Video holds Video Converter, Video Maker, Video Downloader');
   assert(toolsInSubgroup('audio').map((t) => t.id).join(',') === 'audio-converter,text-to-speech,voice-library,voice-cloner,speech-to-text', 'Audio holds the five sound tools');
   assert(MEDIA_SUBGROUPS.reduce((n, m) => n + toolsInSubgroup(m.id).length, 0) === mediaTools.length, 'the three choices together hold every Media tool exactly once');
-  assert(CATALOG_TOOLS.length === 61, '61 tools after two converter entries are replaced by one');
+  assert(CATALOG_TOOLS.length === 62, '61 tools after two converter entries are replaced by one');
 
   assert(CATALOG_TOOLS.filter(t=>t.id==='converter').length===1,'exactly one Converter');
   assert(CATALOG_TOOLS.find(t=>t.id==='converter')?.status==='available' && CATALOG_TOOLS.find(t=>t.id==='converter')?.opens==='converter','Converter is open and leads to its screen');
@@ -87,7 +87,7 @@ async function main() {
   assert(group('link-analyzer') === 'web-data', 'Link Analyzer is in Web and Data');
   assert(group('background-proof') === 'device-system', 'Background Proof is in Device and System');
   assert(group('ai-assistant') === 'device-system', 'AI Assistant is in Device and System');
-  assert(CATALOG_TOOLS.length === 61, '61 tools after converter consolidation');
+  assert(CATALOG_TOOLS.length === 62, '61 tools after converter consolidation');
   assert(CATALOG_TOOLS.filter((t) => t.status === 'coming-soon').length === CATALOG_TOOLS.filter((t) => t.status !== 'available').length && CATALOG_TOOLS.every((t) => t.status === 'available' || t.status === 'coming-soon'), 'every tool that is not available is honestly marked coming soon (count derived, not remembered)');
   assert(
     CATALOG_TOOLS.every((t) => t.name.trim() !== '' && t.description.trim() !== '' && t.description.length <= 100),

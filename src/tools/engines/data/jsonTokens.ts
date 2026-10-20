@@ -5,7 +5,7 @@ export type JsonError = {ok:false;error:JsonErrorCode;message:string;line:number
 export type JsonSuccess<T> = {ok:true;value:T};
 export type JsonResult<T> = JsonSuccess<T>|JsonError;
 export type JsonToken = {type:'string'|'number'|'literal'|'punctuation';text:string;start:number;end:number};
-export const JSON_TOKENS_DESCRIPTOR = {toolId:'json-reformatter',displayName:'JSON Reformatter',purpose:'Validate, indent or minify JSON without changing number literals or duplicate keys.',examples:['{"a":1.0}','[1e5,true]'],inputs:[{name:'text',kind:'text' as const},{name:'indent',kind:'choice' as const,choices:['2','4','tab']}]} as const;
+export const JSON_TOKENS_DESCRIPTOR = {toolId:'json-viewer',displayName:'JSON Reformatter',purpose:'Validate, indent or minify JSON without changing number literals or duplicate keys.',examples:['{"a":1.0}','[1e5,true]'],inputs:[{name:'text',kind:'text' as const},{name:'indent',kind:'choice' as const,choices:['2','4','tab']}]} as const;
 const ws=(c:string)=>c===' '||c==='\t'||c==='\r'||c==='\n';
 const digit=(c:string)=>c>='0'&&c<='9';
 function scan(text:string):JsonResult<JsonToken[]> {

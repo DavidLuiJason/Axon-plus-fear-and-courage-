@@ -259,6 +259,7 @@ export const CATALOG_TOOLS: readonly CatalogTool[] = [
     groupId: 'files-convert',
     status: 'coming-soon',
   },
+  { id: 'file-compare', name: 'File Compare', description: 'Compare any two files and see how many differences there are and where.', groupId: 'files-convert', status: 'coming-soon' },
   { id: 'converter', name: 'Unit & Base Converter', description: 'Convert lengths, weights, temperatures and other units, and number bases.', groupId: 'files-convert', status: 'available', opens: 'converter' },
   {
     id: 'find-replace',
