@@ -1,6 +1,6 @@
 {
  "version": 2,
- "seal": "2ac80853a231a2ec65630510843d131473022d51af7ccf2ee67c7fcd690a1118",
+ "seal": "5db6824edf4611ca583a9b0d2f12f6a015f11d47152481acf9eeea145cbf3fb1",
  "dictionaries": [
   "public/dictionary/en"
  ],
@@ -199,6 +199,9 @@
   },
   "docs/reports/C09_REPORT.md": {
    "bytes": 8439
+  },
+  "docs/reports/C10_REPORT.md": {
+   "bytes": 6453
   },
   "docs/reports/C11_REPORT.md": {
    "bytes": 8149
@@ -597,6 +600,9 @@
   "src/tools/collage/collage.ts": {
    "bytes": 5971
   },
+  "src/tools/converter/blocks.ts": {
+   "bytes": 9092
+  },
   "src/tools/converter/convert.ts": {
    "bytes": 2768
   },
@@ -806,6 +812,9 @@
   },
   "tests/collage.test.ts": {
    "bytes": 5042
+  },
+  "tests/convertBlocks.test.ts": {
+   "bytes": 4335
   },
   "tests/convertPlan.test.ts": {
    "bytes": 4054
