@@ -1,7 +1,11 @@
 import { convert as unitConvert } from '../engines/numbers/unitConvert';
 import { convertBase } from '../engines/numbers/baseConvert';
 import { CONVERTER_KINDS } from './kinds';
-export type ConvertOutcome = {ok:true;value:string;example:string}|{ok:false;error:'empty'|'not-a-number'|'out-of-range'|'invalid-digit'|'unknown-kind'|'unknown-unit'};
+import { convertBlock, convertText, planConversion, type BlockFormat, type BlockOptions } from './blocks';
+import type { ImageConversionRequest, ImageConversionPlan } from '../engines/images/convertPlan';
+export type ConvertOutcome = {ok:true;value:string;example:string;changes?:string[]}|{ok:false;error:'empty'|'not-a-number'|'out-of-range'|'invalid-digit'|'unknown-kind'|'unknown-unit'|string;message?:string};
+export { planConversion };
+export type { ImageConversionRequest, ImageConversionPlan };
 function format(n:number):string {
  if(Object.is(n,-0)||n===0)return '0';
  const rounded=Number(n.toPrecision(10));
@@ -10,11 +14,14 @@ function format(n:number):string {
  if(a>=1e-7&&a<1e15)return rounded.toLocaleString('en-US',{useGrouping:false,maximumSignificantDigits:10});
  return rounded.toExponential(9).replace(/\.?0+e/,'e').replace('e+','e');
 }
-export function convert(request:{kind:string;from:string;to:string;input:string}):ConvertOutcome {
+export function convert(request:{kind:string;from:string;to:string;input:string;options?:BlockOptions;imageRequest?:ImageConversionRequest}):ConvertOutcome {
  try {
   const kind=CONVERTER_KINDS.find(k=>k.id===request?.kind);
   if(!kind)return {ok:false,error:'unknown-kind'};
   const from=kind.units.find(u=>u.id===request.from),to=kind.units.find(u=>u.id===request.to);
+  if(kind.id==='image'){if(from&&to&&from.id===to.id&&typeof request.input==='string'&&request.input.trim())return {ok:true,value:request.input,example:'Input preserved without conversion.'};return {ok:false,error:'image-plan-required',message:'Image conversion requires image metadata; call planConversion(request) to obtain a pure plan.'};}
+  if(kind.id==='data-formats'){if(!from||!to)return {ok:false,error:'unknown-unit'};const r=convertBlock({from:from.id as BlockFormat,to:to.id as BlockFormat,input:request.input,options:request.options});return r.ok?{ok:true,value:r.value,example:r.example,changes:r.changes}:{ok:false,error:r.error,message:r.message};}
+  if(kind.id==='text-formats'){if(!from||!to)return {ok:false,error:'unknown-unit'};const r=convertText({from:from.id as 'txt'|'md'|'html',to:to.id as 'txt'|'md'|'html',input:request.input});return r.ok?{ok:true,value:r.value,example:r.example,changes:r.changes}:{ok:false,error:r.error,message:r.message};}
   if(!from||!to)return {ok:false,error:'unknown-unit'};
   if(typeof request.input!=='string')return {ok:false,error:'not-a-number'};
   const raw=request.input.trim();if(!raw)return {ok:false,error:'empty'};

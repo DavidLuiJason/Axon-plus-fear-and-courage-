@@ -68,7 +68,7 @@ async function main() {
   assert(['Currency Converter','Text Format Converter','Data Converter','Document Converter','File Converter','Image Converter','Video Converter','Audio Converter'].every(name=>CATALOG_TOOLS.some(t=>t.name===name)),'unbuilt converter families remain');
   for(const kind of CONVERTER_KINDS){
     assert(kind.defaultFrom!==kind.defaultTo && kind.units.some(u=>u.id===kind.defaultFrom) && kind.units.some(u=>u.id===kind.defaultTo),`${kind.name} defaults are valid and distinct`);
-    for(const unit of kind.units)assert(kind.entry==='text'?Number.isInteger(Number(unit.id))&&Number(unit.id)>=2&&Number(unit.id)<=36:listUnits(kind.id as Parameters<typeof listUnits>[0]).some(u=>u.symbol===unit.id),`${kind.name} accepts ${unit.id}`);
+    for(const unit of kind.units)assert(kind.entry==='block'||kind.entry==='file'?unit.id.length>0&&unit.name.length>0:kind.entry==='text'?Number.isInteger(Number(unit.id))&&Number(unit.id)>=2&&Number(unit.id)<=36:listUnits(kind.id as Parameters<typeof listUnits>[0]).some(u=>u.symbol===unit.id),`${kind.name} accepts ${unit.id}`);
   }
   console.log('-- tools');
   assert(new Set(CATALOG_TOOLS.map((t) => t.id)).size === CATALOG_TOOLS.length, 'tool ids are unique');

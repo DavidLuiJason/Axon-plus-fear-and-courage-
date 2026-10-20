@@ -3,6 +3,9 @@ let checks=0;
 function assert(ok:boolean,message:string){checks++;if(!ok)throw new Error(`FAIL: ${message}`);}
 for(const kind of CONVERTER_KINDS){
  const input=kind.entry==='text'?'255':'1';
+ // Block formats accept arbitrary text, and image conversion needs file metadata; their contracts are tested in convertBlocks.test.ts.
+ if(kind.entry==='file'){const same=convert({kind:kind.id,from:kind.defaultFrom,to:kind.defaultFrom,input});assert(same.ok&&same.value===input,`${kind.id} identity`);assert(!convert({kind:kind.id,from:kind.defaultFrom,to:kind.defaultTo,input}).ok,`${kind.id} requires image metadata`);continue;}
+ if(kind.entry==='block'){const a=convert({kind:kind.id,from:kind.defaultFrom,to:kind.defaultTo,input});assert(a.ok,`${kind.id} default conversion`);assert(convert({kind:kind.id,from:kind.defaultFrom,to:kind.defaultFrom,input}).ok,`${kind.id} identity`);continue;}
  const a=convert({kind:kind.id,from:kind.defaultFrom,to:kind.defaultTo,input});
  assert(a.ok,`${kind.id} forwards`);
  if(a.ok){
@@ -61,7 +64,7 @@ for(const kind of CONVERTER_KINDS){
  assert(kind.defaultFrom!==kind.defaultTo,`${kind.id} distinct defaults`);
  assert(new Set(kind.units.map(u=>u.id)).size===kind.units.length,`${kind.id} unique units`);
  assert(kind.units.some(u=>u.id===kind.defaultFrom)&&kind.units.some(u=>u.id===kind.defaultTo),`${kind.id} defaults exist`);
- assert(JSON.stringify(kind.units.filter(u=>u.common).map(u=>u.id).sort())===JSON.stringify([...commons[kind.id]].sort()),`${kind.id} exact common units`);
- assert(outcome(kind.id,kind.defaultFrom,kind.defaultTo,kind.entry==='text'?'255':'1').ok,`${kind.id} defaults convert`);
+ if(commons[kind.id])assert(JSON.stringify(kind.units.filter(u=>u.common).map(u=>u.id).sort())===JSON.stringify([...commons[kind.id]].sort()),`${kind.id} exact common units`);
+ if(kind.entry!=='file')assert(outcome(kind.id,kind.defaultFrom,kind.defaultTo,kind.entry==='text'?'255':'1').ok,`${kind.id} defaults convert`);
 }
 console.log(`toolsConverter regression: ${checks} checks passed`);
