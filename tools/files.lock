@@ -1,6 +1,6 @@
 {
  "version": 2,
- "seal": "55bcd8dc2757412fa954342896076309094de46c9bf9a1e780ffd8ce8cbeca17",
+ "seal": "ad62ecf1d776515dcc4d51c0ec92b779e0b3e2877787139dc43764579b6e807f",
  "dictionaries": [
   "public/dictionary/en"
  ],
@@ -199,6 +199,9 @@
   },
   "docs/reports/C11_REPORT.md": {
    "bytes": 8149
+  },
+  "docs/reports/C15_REPORT.md": {
+   "bytes": 8528
   },
   "index.html": {
    "bytes": 1290
@@ -621,8 +624,14 @@
   "src/tools/engines/create/randomPicker.ts": {
    "bytes": 5046
   },
+  "src/tools/engines/data/csv.ts": {
+   "bytes": 7239
+  },
   "src/tools/engines/data/jsonTokens.ts": {
    "bytes": 7210
+  },
+  "src/tools/engines/data/jsonView.ts": {
+   "bytes": 8737
   },
   "src/tools/engines/data/xml.ts": {
    "bytes": 13026
@@ -638,6 +647,9 @@
   },
   "src/tools/engines/files/inspect.ts": {
    "bytes": 8060
+  },
+  "src/tools/engines/files/zipTool.ts": {
+   "bytes": 12237
   },
   "src/tools/engines/finance/loan.ts": {
    "bytes": 4086
@@ -795,6 +807,9 @@
   "tests/cropResize.test.ts": {
    "bytes": 5924
   },
+  "tests/csv.test.ts": {
+   "bytes": 3017
+  },
   "tests/deviceProfile.test.ts": {
    "bytes": 3316
   },
@@ -854,6 +869,9 @@
   },
   "tests/jsonTokens.test.ts": {
    "bytes": 2204
+  },
+  "tests/jsonView.test.ts": {
+   "bytes": 2624
   },
   "tests/kernel.test.ts": {
    "bytes": 22288
@@ -947,6 +965,9 @@
   },
   "tests/yaml.test.ts": {
    "bytes": 3631
+  },
+  "tests/zipTool.test.ts": {
+   "bytes": 7214
   },
   "tools/auto-unpack.sh": {
    "bytes": 3453
