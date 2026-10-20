@@ -1,6 +1,6 @@
 {
  "version": 2,
- "seal": "136b60724817d1f4ece4b45706774d7d80251f7743d74b33779621f875fcce12",
+ "seal": "55bcd8dc2757412fa954342896076309094de46c9bf9a1e780ffd8ce8cbeca17",
  "dictionaries": [
   "public/dictionary/en"
  ],
@@ -196,6 +196,9 @@
   },
   "docs/reports/C08_REPORT.md": {
    "bytes": 7103
+  },
+  "docs/reports/C11_REPORT.md": {
+   "bytes": 8149
   },
   "index.html": {
    "bytes": 1290
@@ -597,6 +600,9 @@
   "src/tools/engines/code/codeFormat.ts": {
    "bytes": 19669
   },
+  "src/tools/engines/code/patternTest.ts": {
+   "bytes": 5698
+  },
   "src/tools/engines/create/encodeDecode.ts": {
    "bytes": 5840
   },
@@ -623,6 +629,9 @@
   },
   "src/tools/engines/data/yaml.ts": {
    "bytes": 14893
+  },
+  "src/tools/engines/device/deviceProfile.ts": {
+   "bytes": 5495
   },
   "src/tools/engines/files/fileCompare.ts": {
    "bytes": 15003
@@ -723,6 +732,9 @@
   "src/tools/shared/opHistory.ts": {
    "bytes": 1024
   },
+  "src/tools/shared/toolStore.ts": {
+   "bytes": 8500
+  },
   "src/tools/textCounterRun.ts": {
    "bytes": 2305
   },
@@ -782,6 +794,9 @@
   },
   "tests/cropResize.test.ts": {
    "bytes": 5924
+  },
+  "tests/deviceProfile.test.ts": {
+   "bytes": 3316
   },
   "tests/dictionary.test.ts": {
    "bytes": 11386
@@ -867,6 +882,9 @@
   "tests/packDictionary.test.py": {
    "bytes": 496
   },
+  "tests/patternTest.test.ts": {
+   "bytes": 2336
+  },
   "tests/pickHeadword.test.ts": {
    "bytes": 5483
   },
@@ -890,6 +908,9 @@
   },
   "tests/textFormats.test.ts": {
    "bytes": 1207
+  },
+  "tests/toolStore.test.ts": {
+   "bytes": 5243
   },
   "tests/tools.test.ts": {
    "bytes": 13833
