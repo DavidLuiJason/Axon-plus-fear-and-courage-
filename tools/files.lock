@@ -1,6 +1,6 @@
 {
  "version": 2,
- "seal": "ad62ecf1d776515dcc4d51c0ec92b779e0b3e2877787139dc43764579b6e807f",
+ "seal": "2ac80853a231a2ec65630510843d131473022d51af7ccf2ee67c7fcd690a1118",
  "dictionaries": [
   "public/dictionary/en"
  ],
@@ -197,6 +197,9 @@
   "docs/reports/C08_REPORT.md": {
    "bytes": 7103
   },
+  "docs/reports/C09_REPORT.md": {
+   "bytes": 8439
+  },
   "docs/reports/C11_REPORT.md": {
    "bytes": 8149
   },
@@ -383,6 +386,9 @@
   },
   "src/capabilities/registerDictionary.ts": {
    "bytes": 893
+  },
+  "src/capabilities/registerEngineTools.ts": {
+   "bytes": 4398
   },
   "src/capabilities/registerInterfaceCapture.ts": {
    "bytes": 1235
@@ -660,6 +666,9 @@
   "src/tools/engines/images/convertPlan.ts": {
    "bytes": 8031
   },
+  "src/tools/engines/legacyDescriptors.ts": {
+   "bytes": 9982
+  },
   "src/tools/engines/numbers/baseConvert.ts": {
    "bytes": 1319
   },
@@ -830,6 +839,9 @@
   },
   "tests/elapsedFormat.test.ts": {
    "bytes": 1054
+  },
+  "tests/engineTruth.test.ts": {
+   "bytes": 3978
   },
   "tests/exportPool.test.ts": {
    "bytes": 2388
